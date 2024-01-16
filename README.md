@@ -36,4 +36,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Technical stuffs
+
 Install [shadcn ui](https://ui.shadcn.com/) for getting designed components
+Install [uploadthing](https://uploadthing.com/) for handling file upload
+Install [Clerk](https://clerk.com/) for user management
