@@ -37,7 +37,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Technical stuffs
 
-Install [shadcn ui](https://ui.shadcn.com/) for getting designed components
-Install [uploadthing](https://uploadthing.com/) for handling file upload
-Install [Clerk](https://clerk.com/) for user management
-Vercel for app hosting 
+- Install [shadcn ui](https://ui.shadcn.com/) for getting designed components
+- Install [uploadthing](https://uploadthing.com/) for handling file upload
+- Install [Clerk](https://clerk.com/) for user management
+- Vercel for app hosting 
+- React Hook Form
+- React-datepicker
