@@ -1,4 +1,5 @@
 import { Document, Schema, model, models } from "mongoose";
+import { boolean } from "zod";
 
 export interface IEvent extends Document {
   _id: string;
@@ -25,7 +26,7 @@ const EventSchema = new Schema({
   startDateTime: { type: Date, default: Date.now },
   endDateTime: { type: Date, default: Date.now },
   price: { type: String },
-  isFree: { type: String, default: false },
+  isFree: { type: Boolean, default: false },
   url: { type: String },
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   organizer: { type: Schema.Types.ObjectId, ref: "User" },

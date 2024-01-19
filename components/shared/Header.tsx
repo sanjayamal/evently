@@ -16,6 +16,7 @@ const Header = () => {
             alt="Daiqri logo"
             width={128}
             height={38}
+            priority
           />
         </Link>
         <SignedIn>
