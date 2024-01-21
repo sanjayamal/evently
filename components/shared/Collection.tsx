@@ -1,6 +1,7 @@
 import { CollectionType } from "@/constants";
 import { IEvent } from "@/lib/database/models/event.model";
 import Card from "./Card";
+import PaginationHandler from "./PaginationHandler";
 
 type CollectionProps = {
   data: Array<IEvent>;
@@ -9,7 +10,7 @@ type CollectionProps = {
   collectionType: CollectionType;
   limit: number;
   page: number | string;
-  totalPage?: number;
+  totalPages?: number;
   urlParamName?: string;
 };
 const Collection = ({
@@ -18,7 +19,7 @@ const Collection = ({
   emptyStateSubtext,
   limit,
   page,
-  totalPage,
+  totalPages,
   urlParamName,
   collectionType,
 }: CollectionProps) => {
@@ -43,6 +44,13 @@ const Collection = ({
               );
             })}
           </ul>
+          {totalPages && totalPages > 1 && (
+            <PaginationHandler
+              urlParamName={urlParamName}
+              page={page}
+              totalPages={totalPages}
+            />
+          )}
         </div>
       ) : (
         <div className="flex-center wrapper min-h-[200px] w-full flex flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">

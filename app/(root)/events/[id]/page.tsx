@@ -1,12 +1,25 @@
-import { FREE, eventDefaultValues } from "@/constants";
-import { getEventById } from "@/lib/actions/event.actions";
+import Collection from "@/components/shared/Collection";
+import { CollectionType, FREE, eventDefaultValues } from "@/constants";
+import {
+  getEventById,
+  getRelatedEventsByCategory,
+} from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 
-const EventDetail = async ({ params: { id } }: SearchParamProps) => {
+const EventDetail = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
+  const page = Number(searchParams?.page) || 1;
   const event = await getEventById(id);
+  const relatedEvents = await getRelatedEventsByCategory({
+    categoryId: event.category._id,
+    eventId: event._id,
+    page: page.toString(),
+  });
 
   if (!event) return;
 
@@ -32,8 +45,8 @@ const EventDetail = async ({ params: { id } }: SearchParamProps) => {
           <Image
             src={imageUrl}
             alt="Event Image"
-            width={1000}
-            height={1000}
+            width={800}
+            height={800}
             className="h-full min-h-[300px] object-cover object-center"
           />
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
@@ -96,7 +109,18 @@ const EventDetail = async ({ params: { id } }: SearchParamProps) => {
           </div>
         </div>
       </section>
-      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12"></section>
+      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+        <h2 className="h2-bold">Related Events</h2>
+        <Collection
+          data={relatedEvents?.data}
+          emptyTitle="No Events Found"
+          emptyStateSubtext="Come back later"
+          collectionType={CollectionType.allEvents}
+          limit={6}
+          page={page}
+          totalPages={relatedEvents?.totalPages}
+        />
+      </section>
     </>
   );
 };
