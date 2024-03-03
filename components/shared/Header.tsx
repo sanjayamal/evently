@@ -13,7 +13,7 @@ const Header = () => {
         <Link href="/" className="w-36">
           <Image
             src="/assets/images/logo.svg"
-            alt="Daiqri logo"
+            alt="Evently logo"
             width={128}
             height={38}
             priority
