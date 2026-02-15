@@ -1,4 +1,4 @@
-import { createUploadthing, type FileRouter } from "uploadthing/next";
+import { createUploadthing, type FileRouter } from "uploadthing/server";
  
 const f = createUploadthing();
  
@@ -23,7 +23,7 @@ export const ourFileRouter = {
       // This code RUNS ON YOUR SERVER after upload
       console.log("Upload complete for userId:", metadata.userId);
  
-      console.log("file url", file.url);
+      console.log("file url", file.ufsUrl);
  
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId };
